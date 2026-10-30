@@ -136,7 +136,7 @@ function GoogleSignIn({ onError }) {
       <div className={`relative flex ${loadError ? '' : 'min-h-[44px]'} justify-center ${busy ? 'pointer-events-none opacity-60' : ''}`}>
         <div ref={box} className="w-full [&>div]:mx-auto" />
       </div>
-      {busy && <p className="mt-2 text-center text-[13px] text-ink-faint">Signing you in…</p>}
+      {busy && <p className="mt-2 text-center text-[13px] text-ink-faint">SIGNING YOU IN…</p>}
       {loadError && <p className="text-center text-[13px] text-ink-faint">{loadError}</p>}
     </div>
   );
