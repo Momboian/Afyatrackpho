@@ -1,0 +1,74 @@
+/* Global styles. Tailwind adds its base styles, components and utility classes here. */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Colour tokens (red green blue values). Light mode is the default; dark mode swaps the values. */
+:root {
+  color-scheme: light;
+  --c-paper: 245 244 238; --c-surface: 255 255 255; --c-line: 226 224 214;
+  --c-ink: 20 33 31; --c-ink-soft: 74 88 86; --c-ink-faint: 124 136 134;
+  --c-brand-50: 234 244 241; --c-brand-100: 207 230 223; --c-brand-200: 159 205 191; --c-brand-500: 28 122 104;
+  --c-brand-600: 20 99 79; --c-brand-700: 15 76 64; --c-brand-800: 11 58 49; --c-brand-900: 8 42 36;
+  --c-ochre-50: 253 245 228; --c-ochre-100: 250 230 188; --c-ochre-500: 217 142 4; --c-ochre-600: 176 114 3; --c-ochre-700: 138 89 2;
+}
+.dark {
+  color-scheme: dark;
+  --c-paper: 14 21 19; --c-surface: 22 32 30; --c-line: 46 59 56;
+  --c-ink: 230 237 235; --c-ink-soft: 172 185 182; --c-ink-faint: 132 146 143;
+  --c-brand-50: 21 50 43; --c-brand-100: 29 66 57; --c-brand-200: 44 107 91; --c-brand-500: 63 184 155;
+  --c-brand-600: 92 203 174; --c-brand-700: 35 134 111; --c-brand-800: 29 112 93; --c-brand-900: 22 88 73;
+  --c-ochre-50: 46 36 16; --c-ochre-100: 74 57 20; --c-ochre-500: 224 162 58; --c-ochre-600: 232 178 90; --c-ochre-700: 240 199 126;
+}
+
+/* Base page styles and a visible focus ring for keyboard users. */
+@layer base {
+  html { -webkit-text-size-adjust: 100%; }
+  body { @apply bg-paper text-ink font-sans antialiased; }
+  :focus-visible { @apply outline-none ring-2 ring-brand-500 ring-offset-2 ring-offset-paper; }
+}
+/* Shared classes used across the app: inputs, labels, cards and tables. */
+@layer components {
+  .input { @apply w-full rounded-lg border border-line bg-surface px-3 py-2.5 text-[15px] text-ink placeholder:text-ink-faint focus:border-brand-500 focus:ring-2 focus:ring-brand-100 outline-none transition; }
+  .input-error { @apply border-red-400 focus:border-red-500 focus:ring-red-100; }
+  .label { @apply mb-1 block text-[13px] font-semibold text-ink-soft; }
+  .card { @apply rounded-xl border border-line bg-surface shadow-card; }
+  .tbl { @apply w-full text-left text-sm; }
+  .tbl th { @apply whitespace-nowrap border-b border-line bg-paper/60 px-3 py-2.5 text-[12px] font-semibold uppercase tracking-wide text-ink-faint; }
+  .tbl td { @apply border-b border-line/70 px-3 py-3 align-top; }
+  .tbl tr:last-child td { @apply border-b-0; }
+  .tbl tbody tr { @apply transition-colors; }
+  .tbl tbody tr.clickable:hover { @apply cursor-pointer bg-brand-50/50; }
+}
+
+/* Dark mode versions of the few fixed Tailwind colours used for status badges and warnings. */
+.dark .text-brand-700, .dark .text-brand-800 { color: rgb(var(--c-brand-600)); }
+.dark .bg-red-50, .dark .bg-red-50\/60 { background-color: rgb(127 29 29 / 0.3); }
+.dark .hover\:bg-red-50:hover { background-color: rgb(127 29 29 / 0.3); }
+.dark .text-red-600, .dark .hover\:text-red-600:hover { color: rgb(248 113 113); }
+.dark .text-red-700 { color: rgb(252 165 165); }
+.dark .text-red-500 { color: rgb(248 113 113); }
+.dark .border-red-100, .dark .border-red-200 { border-color: rgb(127 29 29 / 0.7); }
+.dark .ring-red-200 { --tw-ring-color: rgb(127 29 29 / 0.8); }
+.dark .bg-emerald-50 { background-color: rgb(6 78 59 / 0.35); }
+.dark .text-emerald-800 { color: rgb(110 231 183); }
+.dark .ring-emerald-200 { --tw-ring-color: rgb(6 95 70 / 0.8); }
+.dark .bg-sky-50 { background-color: rgb(12 74 110 / 0.35); }
+.dark .text-sky-800 { color: rgb(125 211 252); }
+.dark .text-sky-600 { color: rgb(56 189 248); }
+.dark .ring-sky-200 { --tw-ring-color: rgb(7 89 133 / 0.8); }
+.dark .bg-violet-50 { background-color: rgb(76 29 149 / 0.3); }
+.dark .text-violet-700 { color: rgb(196 181 253); }
+.dark .ring-violet-200 { --tw-ring-color: rgb(91 33 182 / 0.8); }
+.dark .bg-stone-50, .dark .bg-stone-100 { background-color: rgb(68 64 60 / 0.4); }
+.dark .text-stone-600 { color: rgb(214 211 209); }
+.dark .ring-stone-200 { --tw-ring-color: rgb(87 83 78 / 0.8); }
+.dark .border-stone-300 { border-color: rgb(87 83 78); }
+.dark .shadow-card { box-shadow: 0 1px 0 rgba(0,0,0,0.3), 0 1px 3px rgba(0,0,0,0.4); }
+
+/* When printing, always use light colours, hide anything marked no-print and remove card shadows. */
+@media print {
+  .no-print { display: none !important; }
+  body { background: white; }
+  .print-area { box-shadow: none !important; border: none !important; }
+}

@@ -1,0 +1,11 @@
+# Files Git must never save. Keep .env and the Firebase key out of GitHub.
+node_modules
+dist
+data
+.env
+*.log
+firebase-service-account.json
+*-service-account*.json
+.firebase/
+firebase-debug.log
+firestore-debug.log

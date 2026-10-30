@@ -1,0 +1,55 @@
+{
+  "name": "afyatrack-pho",
+  "version": "1.0.0",
+  "private": true,
+  "description": "AfyaTrack PHO: ward level Public Health Officer work management (planner, registers, inspections, follow ups, reports)",
+  "type": "module",
+  "scripts": {
+    "dev": "node scripts/dev.js",
+    "dev:web": "vite",
+    "dev:api": "node --watch server/index.js",
+    "dev:memory": "node scripts/dev.js --memory",
+    "build": "vite build",
+    "start": "cross-env NODE_ENV=production node server/index.js",
+    "seed": "node server/seed.js",
+    "reset-db": "node server/seed.js --reset",
+    "backup": "node server/backup.js",
+    "restore": "node server/backup.js restore",
+    "migrate:sqlite": "node server/migrate-sqlite.js",
+    "emulator": "firebase emulators:start --only firestore",
+    "deploy:rules": "firebase deploy --only firestore:rules",
+    "test": "node --test --test-concurrency=1 server/tests/*.test.js",
+    "setup": "node server/seed.js",
+    "catalogue": "node server/seed.js --catalogue",
+    "accounts": "node server/seed.js --accounts",
+    "check-firebase": "node scripts/check-firebase.js"
+  },
+  "engines": {
+    "node": ">=18.18"
+  },
+  "dependencies": {
+    "@vitejs/plugin-react": "^4.7.0",
+    "autoprefixer": "^10.6.1",
+    "bcryptjs": "^3.0.3",
+    "cookie-parser": "^1.4.7",
+    "cross-env": "^7.0.3",
+    "dotenv": "^18.0.7",
+    "express": "^4.22.3",
+    "express-rate-limit": "^8.7.1",
+    "firebase-admin": "^12.7.0",
+    "google-auth-library": "^9.15.1",
+    "helmet": "^8.3.0",
+    "jsonwebtoken": "^9.0.3",
+    "lucide-react": "^1.57.0",
+    "nodemailer": "^6.10.1",
+    "postcss": "^8.5.30",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.30.6",
+    "tailwindcss": "^3.4.19",
+    "vite": "^5.4.21"
+  },
+  "optionalDependencies": {
+    "better-sqlite3": "^12.0.0"
+  }
+}
